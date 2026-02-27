@@ -7,7 +7,7 @@ CREATE TABLE BOOKED (
     Ticket_Type TEXT NOT NULL CHECK(Ticket_Type IN ('Premium','General')),
     Status TEXT NOT NULL CHECK(Status IN ('Booked','Waitlist','Cancelled')),
     FOREIGN KEY (Passenger_ssn) REFERENCES PASSENGER(SSN),
-    FOREIGN KEY (Train_Number) REFERENCES TRAIN(TrainNumber)
+    FOREIGN KEY (Train_Number) REFERENCES TRAIN(TrainNumber) 
 );
 
 CREATE TABLE PASSENGER (
@@ -40,4 +40,5 @@ CREATE TABLE TRAIN_STATUS (
     PremiumSeatsOccupied INTEGER CHECK(PremiumSeatsOccupied BETWEEN 0 AND 10),
     GenSeatsOccupied INTEGER CHECK(GenSeatsOccupied BETWEEN 0 AND 10),
     FOREIGN KEY (TrainNumber) REFERENCES TRAIN(TrainNumber)
+        ON DELETE CASCADE
 );

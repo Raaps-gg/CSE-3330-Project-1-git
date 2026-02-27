@@ -15,7 +15,8 @@ WHERE b.Passenger_ssn = p.SSN
   AND ts.TrainDate = 'Sunday'
   AND b.Status = 'Booked';
 
---Display the train information (Train Number, Train Name, Source and Destination) and passenger information (Name, Address, Category, ticket status) of passengers who are between the ages of 50 to 60. 
+--Display the train information (Train Number, Train Name, Source and Destination) and passenger information 
+--(Name, Address, Category, ticket status) of passengers who are between the ages of 50 to 60. 
 SELECT t.TrainNumber AS TrainNumber, t.TrainName AS TrainName,
        t.SourceStation AS Source, t.DestinationStation AS Destination,
        CONCAT(p.first_name," ",p.last_name) AS Name,
@@ -54,3 +55,11 @@ SELECT CONCAT(p.first_name," ",p.last_name) AS Name
 FROM PASSENGER AS p
 WHERE p.phone2 LIKE '605%'
 ORDER BY Name DESC;
+
+--List name of passengers that are traveling on Thursdays in ascending order.
+SELECT CONCAT(p.first_name," ",p.last_name) AS Name
+FROM PASSENGER AS p, BOOKED AS b, TRAIN AS t
+WHERE b.Passenger_ssn = p.SSN
+  AND b.Train_Number = t.TrainNumber
+  AND t.Weekdays LIKE '%Thursday%'
+ORDER BY Name ASC;

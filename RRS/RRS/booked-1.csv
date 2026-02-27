@@ -1,4 +1,4 @@
-﻿Passanger_ssn,Train_Number,Ticket_Type,Status
+Passenger_ssn,Train_Number,Ticket_Type,Status
 284965676,2,Premium,Booked
 317434088,2,Premium,Booked
 240471168,2,General,Booked
